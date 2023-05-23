@@ -16,8 +16,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git branch: 'main', url: 'https://github.com/PANCHEVMATEY/nodejs-my-proj.git'
-                // Clones the Git repository using the provided URL and branch
+                git branch: 'main', url: "https://github.com/PANCHEVMATEY/nodejs-my-proj.git"
             }
         }
         stage('Build') {
