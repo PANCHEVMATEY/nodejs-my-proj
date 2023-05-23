@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'ssh_slave'//'kiofteta-slave'
+        label 'my-second-slave'//'ssh_slave' //'kiofteta-slave'
     }
     tools {
         nodejs 'nodeJs'
@@ -9,28 +9,31 @@ pipeline {
         stage('Clone Repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/PANCHEVMATEY/nodejs-my-proj.git'
+                // Clones the Git repository using the provided URL and branch
             }
         }
         stage('Build') {
             steps {
-                sh 'npm ci' // This is for building the Node.js project
+                sh 'npm ci'
+                // Runs 'npm ci' to install the project dependencies
+                // This step is for building the Node.js project
             }
         }
-        stage('test') {
+        stage('Test') {
             steps {
-                sh 'npm test' // This is for testing the Node.js modules
+                sh 'npm test'
+                // Runs 'npm test' to execute tests
+                // This step is for testing the Node.js modules
             }
         }
         stage('Deploy') {
-            steps {
-                sh "npm install -g forever"
+           steps {
+                sh 'npm install -g forever'
+                // Installs Forever process manager globally using npm
                 sh 'forever start src/index.js'
-            }
-        }
-    }
-    post {
-        always {
-            cleanWs() // Clean workspace after the pipeline finishes
+                // Starts the application's entry point (index.js) using Forever
+                // Forever ensures the application keeps running even after the Jenkins job finishes
+           }
         }
     }
 }
