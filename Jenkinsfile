@@ -34,9 +34,9 @@ pipeline {
                 // This step is for testing the Node.js modules
             }
         }
-        stage('Docker login'){
-               steps {
-                   sh 'docker login -u $DOCKERHUB_CREDENTIALS -p $DOCKERHUB_CREDENTIALS'
+        stage('Docker Login'){
+            steps {
+                sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
             }
         }
         stage('Docker build and tag') {
