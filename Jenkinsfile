@@ -14,6 +14,11 @@ pipeline {
         IMAGE_NAME = 'mateyp/mynodejsapp'
     }
     stages {
+        stage('Clean') {
+            steps {
+                cleanWs() //clean workspace
+        }
+    }
         stage('Clone Repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/PANCHEVMATEY/nodejs-my-proj.git'
