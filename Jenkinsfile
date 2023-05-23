@@ -19,7 +19,7 @@ pipeline {
         label 'ssh_slave'//'kiofteta-slave'
     }
     tools {
-      nodejs 'nodeJs'
+        nodejs 'nodeJs'
     }
     stages {
         stage('Clone Repo') {
@@ -37,10 +37,10 @@ pipeline {
                 sh 'npm test' //This is for testing the nodejs modules
             }
         }
-        }
         stage('Deploy') {
-           steps {
+            steps {
                 sh 'forever start src/index.js'
+            }
         }
     }
-    }
+}
