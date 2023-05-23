@@ -16,7 +16,7 @@
 
 pipeline {
     agent {
-        label 'kiofteta-slave'
+        label 'ssh_slave'//'kiofteta-slave'
     }
     tools {
       nodejs 'nodeJs'
