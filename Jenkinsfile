@@ -33,7 +33,7 @@ pipeline {
                 // This step is for testing the Node.js modules
             }
         }
-        stage('Docker Login'){
+        stage('Docker Login') {
             steps {
                 sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
             }
@@ -52,23 +52,14 @@ pipeline {
                 // Pushes the Docker image to Docker Hub with the tagged version
             }
         }
-        stage('Deploy')
-        {
-            steps
-            {
+        stage('Deploy') {
+            steps {
                 sh 'docker container rm -f mynodejsapp || true'
+                // Removes any existing container with the name 'mynodejsapp' if it exists
                 sh 'docker container run -d -p 3000:3000 --name mynodejsapp mateyp/mynodejsapp'
+                // Runs a new container named 'mynodejsapp' with the image 'mateyp/mynodejsapp'
+                // The container is detached (-d) and maps port 3000 on the host to port 3000 in the container
             }
         }
-//         stage('Deploy') {
-//             steps {
-//                 sh 'pkill node | true'
-//                 // Stops any existing Node.js processes (if running)
-//                 sh 'npm install -g forever'
-//                 // Installs Forever process manager globally using npm
-//                 sh 'forever start src/index.js'
-//                 // Starts the application's entry point (index.js) using Forever
-//                 // Forever ensures the application keeps running even after the Jenkins job finishes
-           }
-        }
     }
+}
