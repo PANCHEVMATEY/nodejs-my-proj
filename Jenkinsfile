@@ -52,15 +52,23 @@ pipeline {
                 // Pushes the Docker image to Docker Hub with the tagged version
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'pkill node | true'
-                // Stops any existing Node.js processes (if running)
-                sh 'npm install -g forever'
-                // Installs Forever process manager globally using npm
-                sh 'forever start src/index.js'
-                // Starts the application's entry point (index.js) using Forever
-                // Forever ensures the application keeps running even after the Jenkins job finishes
+        stage('Deploy')
+        {
+            steps
+            {
+                sh 'docker container rm -f mynodejsapp || true'
+                sh 'docker container run -d -p 3000:3000 --name mynodejsapp mateyp/mynodejsapp'
+            }
+        }
+//         stage('Deploy') {
+//             steps {
+//                 sh 'pkill node | true'
+//                 // Stops any existing Node.js processes (if running)
+//                 sh 'npm install -g forever'
+//                 // Installs Forever process manager globally using npm
+//                 sh 'forever start src/index.js'
+//                 // Starts the application's entry point (index.js) using Forever
+//                 // Forever ensures the application keeps running even after the Jenkins job finishes
            }
         }
     }
