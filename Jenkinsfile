@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'my-second-slave'//'ssh_slave' //'kiofteta-slave'
+        label 'dev-group'//'ssh_slave' //'kiofteta-slave'
     }
     tools {
         nodejs 'nodeJs'
