@@ -5,6 +5,9 @@ pipeline {
     tools {
         nodejs 'nodeJs'
     }
+    triggers {
+        githubPush()
+    }
     stages {
         stage('Clone Repo') {
             steps {
