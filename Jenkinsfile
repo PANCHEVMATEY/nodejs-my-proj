@@ -42,6 +42,10 @@ pipeline {
                 sh "npm install -g forever"
                 sh 'forever start src/index.js'
             }
+    post {
+        steps {
+        cleanWs()}
+    }
         }
     }
 }
