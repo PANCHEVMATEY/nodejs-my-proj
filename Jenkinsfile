@@ -28,11 +28,9 @@ pipeline {
         }
         stage('Deploy') {
            steps {
+                sh 'pkill node | true'
                 sh 'npm install -g forever'
-                // Installs Forever process manager globally using npm
                 sh 'forever start src/index.js'
-                // Starts the application's entry point (index.js) using Forever
-                // Forever ensures the application keeps running even after the Jenkins job finishes
            }
         }
     }
