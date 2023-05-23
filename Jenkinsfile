@@ -56,7 +56,7 @@ pipeline {
             steps {
                 sh 'docker container rm -f mynodejsapp || true'
                 // Removes any existing container with the name 'mynodejsapp' if it exists
-                sh 'docker container run -d -p 3000:3000 --name mynodejsapp mateyp/mynodejsapp'
+                sh 'docker container run -d --name mynodejsapp mateyp/mynodejsapp'
                 // Runs a new container named 'mynodejsapp' with the image 'mateyp/mynodejsapp'
                 // The container is detached (-d) and maps port 3000 on the host to port 3000 in the container
             }
