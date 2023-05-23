@@ -10,13 +10,13 @@ pipeline {
         githubPush()
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('my_dockerhub_creds)
+        DOCKERHUB_CREDENTIALS = credentials('my_dockerhub_creds')
         IMAGE_NAME = 'mateyp/mynodejsapp'
     }
     stages {
         stage('Clone Repo') {
             steps {
-                git branch: 'main', url: "https://github.com/PANCHEVMATEY/nodejs-my-proj.git"
+                git branch: 'main', url: 'https://github.com/PANCHEVMATEY/nodejs-my-proj.git'
             }
         }
         stage('Build') {
