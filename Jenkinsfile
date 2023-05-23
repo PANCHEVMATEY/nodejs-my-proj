@@ -29,12 +29,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm ci' //This is for building the nodejs project
+                sh 'npm ci' // This is for building the Node.js project
             }
         }
         stage('test') {
             steps {
-                sh 'npm test' //This is for testing the nodejs modules
+                sh 'npm test' // This is for testing the Node.js modules
             }
         }
         stage('Deploy') {
@@ -42,10 +42,11 @@ pipeline {
                 sh "npm install -g forever"
                 sh 'forever start src/index.js'
             }
-    post {
-        steps {
-        cleanWs()}
+        }
     }
+    post {
+        always {
+            cleanWs() // Clean workspace after the pipeline finishes
         }
     }
 }
