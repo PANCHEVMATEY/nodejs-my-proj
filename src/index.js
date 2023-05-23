@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
         </style>
       </head>
       <body>
-        <h2>Matey e pi4!</h2>
+        <h2>Matey e golem pi4!</h2>
       </body>
     </html>
   `;
