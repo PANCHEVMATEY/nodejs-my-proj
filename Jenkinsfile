@@ -1,19 +1,3 @@
-
-        stage('Deploy') {
-           steps {
-                sh 'npm install -g forever'
-                sh 'forever start src/index.js'
-           }
-        }
-    }
-
-    post {
-      always {
-         cleanWs()
-      }
-    }
-}
-
 pipeline {
     agent {
         label 'ssh_slave'//'kiofteta-slave'
