@@ -10,7 +10,7 @@ pipeline {
         githubPush()
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('my_dockerhub_creds')
+        DOCKERHUB_CREDENTIALS = credentials('my_dockerhub_creds)
         IMAGE_NAME = 'mateyp/mynodejsapp'
     }
     stages {
